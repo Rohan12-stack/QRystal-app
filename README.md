@@ -27,12 +27,12 @@ The project is divided into two main components:
 
 ### 1. Backend (ML Model Training)
 
-Located in the \backend/training\ directory, this component is responsible for:
+Located in the backend/training directory, this component is responsible for:
 
-- **Data Preparation**: URLs dataset cleaned and labeled as safe or malicious for model learning (\prepare_dataset.py\)
-- **Model Training**: ML model trained using classification algorithms on extracted URL features (\train_model.py\)
-- **Model Conversion**: Trained model converted to TensorFlow Lite (TFLite) for mobile compatibility (\convert_to_tflite.py\)
-- **Model Testing**: Model evaluated with accuracy and confusion matrix to ensure reliable predictions (\test.py\)
+- **Data Preparation**: URLs dataset cleaned and labeled as safe or malicious for model learning (prepare_dataset.py)
+- **Model Training**: ML model trained using classification algorithms on extracted URL features (train_model.py)
+- **Model Conversion**: Trained model converted to TensorFlow Lite (TFLite) for mobile compatibility (convert_to_tflite.py)
+- **Model Testing**: Model evaluated with accuracy and confusion matrix to ensure reliable predictions (test.py)
 
 
 ### 2. Frontend – Mobile Application
