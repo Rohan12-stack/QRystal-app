@@ -39,9 +39,9 @@ Located in the \`backend/training\` directory, this component is responsible for
 
 Flutter-based Android application that scans QR codes and sends the extracted URL to the on-device ML model for classification and displays results.
 <p align="center">
-  <img src="resources/UI.jpg" alt="Safe URL Result" width="400">
+  <img src="resources/UI.jpg" alt="Safe URL Result" width="250">
   <br>
-  <em>Secure QR Code</em>
+  <em>UI</em>
 </p>
 
 
@@ -71,7 +71,8 @@ The model provides strong accuracy in distinguishing safe URLs from malicious on
 </p>
 
 <p align="center">
-  <img src="resources/result/Spam.jpg" alt="Malicious URL Result" width="400">
+  <img src="resources/result/Spam.jpg" alt="Malicious URL Result" width="200">
+  <img src="resources/result/Spam1.jpg" alt="Malicious URL Result" width="200">
   <br>
   <em>Harmful QR Code</em>
 </p>
