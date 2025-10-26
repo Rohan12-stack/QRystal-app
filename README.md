@@ -1,45 +1,27 @@
-# QRystal
+## **QRystal**
 
-## 📋 Overview
+##  Overview
 
-This project combines mobile technology with machine learning to create a QR code scanner application that can detect potentially malicious URLs. When a user scans a QR code containing a URL, the app not only decodes the QR code but also analyzes the URL to determine if it might be a security threat.
-
-<p align="center">
-  <img src="screenshots/concept.png" alt="Project Concept Overview" width="300">
-  <br>
-  <em>General Concept of the Project</em>
-</p>
-
-## 🚀 Features
-
-- **QR Code Scanning**: Quickly scan any QR code using your device's camera
-- **Real-time URL Analysis**: Immediate classification of URLs as safe or potentially malicious
-- **ML-powered Detection**: Utilizes a trained machine learning model to identify phishing and malicious URLs
-- **Lightweight Implementation**: Model is optimized for mobile performance using TFLite
-- **User-friendly Interface**: Clean, intuitive design with clear security indicators
-
-## 📱 App Screenshots
-
-*Screenshots showing the QR scanning interface and security analysis results*
-<p align="center">
-  <img src="screenshots/mobile_app.png" alt="QR Scanning Screen" width="400">
-  <br>
-  <em>An Overview</em>
-</p>
+QRystal is a mobile application designed to detect QR code fraud by scanning and verifying URLs encoded within QR codes. The app ensures safe browsing by classifying scanned links as **Safe** or **Malicious** using an on-device machine learning model. Its goal is to protect users from phishing attacks and fake websites.
 
 <p align="center">
-  <img src="screenshots/test_result_1.png" alt="Safe URL Result" width="400">
+  <img src="resources/logo.jpeg" alt="App Logo" width="300">
   <br>
-  <em>Secure URL Result</em>
+  
 </p>
 
-<p align="center">
-  <img src="screenshots/test_result_2.png" alt="Malicious URL Result" width="400">
-  <br>
-  <em>Harmful URL Detection</em>
-</p>
+## Features
 
-## 🏗️ Project Structure
+
+
+*    Real-time QR code scanning using the device camera
+*    On-device ML model to classify safe vs suspicious URLs
+*    Instant fraud detection with clear results to the user
+*    Works offline after installation — no need for internet for model inference
+*    User-friendly mobile UI built for fast and secure usage
+
+
+## Project Structure
 
 The project is divided into two main components:
 
@@ -47,61 +29,65 @@ The project is divided into two main components:
 
 Located in the \`backend/training\` directory, this component is responsible for:
 
-- **Data Preparation**: Processing and cleaning URL datasets (\`prepare_dataset.py\`)
-- **Model Training**: Training the machine learning model to detect malicious URLs (\`train_model.py\`)
-- **Model Conversion**: Converting the trained model to TFLite format for mobile deployment (\`convert_to_tflite.py\`)
-- **Model Testing**: Validating the model's performance (\`test.py\`)
+- **Data Preparation**: URLs dataset cleaned and labeled as safe or malicious for model learning (\`prepare_dataset.py\`)
+- **Model Training**: ML model trained using classification algorithms on extracted URL features (\`train_model.py\`)
+- **Model Conversion**: Trained model converted to TensorFlow Lite (TFLite) for mobile compatibility (\`convert_to_tflite.py\`)
+- **Model Testing**: Model evaluated with accuracy and confusion matrix to ensure reliable predictions (\`test.py\`)
 
-The backend uses a dataset of approximately 15,000+ labeled URLs (both safe and malicious) to train a classifier that can identify potentially harmful links.
 
-### 2. Mobile Application
+### 2. Frontend – Mobile Application
 
-Located in the \`mobile_app\` directory, this Flutter-based application provides:
+Flutter-based Android application that scans QR codes and sends the extracted URL to the on-device ML model for classification and displays results.
+<p align="center">
+  <img src="resources/UI.jpg alt="Safe URL Result" width="400">
+  <br>
+  <em>Secure QR Code</em>
+</p>
 
-- A user interface for scanning QR codes
-- Integration with the device's camera
-- URL extraction from QR codes
-- Feature extraction from URLs for analysis
-- Integration with the TFLite model for classification
-- Visual indicators for safe/malicious URLs
 
-## 🧪 Technical Details
+## How It Works
 
-### Machine Learning Model
+*   User opens the app and taps Scan QR
+*   The camera detects and reads the QR code instantly
+*   The extracted URL is preprocessed and converted into model-compatible features
+*   The TFLite model classifies the URL as Safe or Malicious
+*   App shows result with a visual indicator and warning message if risky
+*   User can choose to open or block the link based on the result
+*   All processing happens securely on device — no external data sharing
 
-- **Dataset**: Over 15,000 labeled URLs (safe=0, malicious=1)
-- **Features**: Extracts characteristics from URLs such as length, special character counts, domain information, etc.
-- **Model Type**: Neural network classifier optimized for mobile deployment
-- **Format**: TensorFlow Lite (.tflite) for on-device inference
 
-### Mobile Application
+## Performance
 
-- **Framework**: Flutter for cross-platform deployment
-- **QR Scanning**: Utilizes device camera and QR code libraries
-- **On-device Inference**: Performs URL classification directly on the device without requiring internet connection
-- **Permissions**: Camera access for QR scanning
+The model provides strong accuracy in distinguishing safe URLs from malicious ones such as phishing or suspicious domains. All predictions run locally on the device in milliseconds, delivering immediate security feedback without internet connectivity. This ensures fast operation and strong privacy protection.
 
-## 🔧 How It Works
+## Result
 
-1. User opens the app and points their camera at a QR code
-2. The app decodes the QR code and extracts the URL
-3. The URL undergoes feature extraction to create input for the ML model
-4. The TFLite model analyzes these features and classifies the URL
-5. The app displays the result to the user, indicating whether the URL is safe or potentially malicious
-6. The user can then decide whether to visit the link or not
 
-## 📊 Performance
+<p align="center">
+  <img src="resources/result/Github1.jpg alt="Safe URL Result" width="200">
+  <img src="resources/result/Github2.jpg alt="Safe URL Result" width="200">
+  <br>
+  <em>Secure QR Code</em>
+</p>
 
-The model achieves high accuracy in distinguishing between safe and malicious URLs, with detailed performance metrics available in the graduation project report. The on-device classification happens in milliseconds, providing users with immediate security feedback.
+<p align="center">
+  <img src="resources/result/Spam.jpg" alt="Malicious URL Result" width="400">
+  <br>
+  <em>Harmful QR Code</em>
+</p>
 
-## 🚀 Getting Started
 
 ### Prerequisites
 
-- Flutter SDK
-- Android Studio or Xcode for mobile deployment
-- Python 3.x for backend/model training (only if you wish to retrain the model)
-- TensorFlow 2.x for model training
+- Flutter SDK installed for mobile development
+
+- Android device (Android 7.0 or above) for testing
+
+- Google Camera permissions enabled for QR scanning
+
+- TFLite runtime support for on-device model inference
+
+- Internet required only once to install the APK (after that offline support)
 
 ### Installation
 
@@ -109,6 +95,7 @@ The model achieves high accuracy in distinguishing between safe and malicious UR
 2. Set up the Flutter environment:
    ```
    cd mobile_app
+   flutter clean
    flutter pub get
    ```
 3. Run the app:
@@ -116,24 +103,4 @@ The model achieves high accuracy in distinguishing between safe and malicious UR
    flutter run
    ```
 
-## 🔒 Security Considerations
 
-This application is designed to provide an additional layer of security when interacting with QR codes in public or unknown environments. However, it should not be considered a replacement for comprehensive security practices:
-
-- Always exercise caution when clicking on links, even those identified as "safe"
-- Keep your device and applications updated
-- Use additional security tools for critical activities
-
-## 👨‍💻 Development Notes
-
-This project was developed as a graduation project and demonstrates the integration of machine learning with mobile technology to address a common security concern.
-
-## 📚 Resources
-
-- The full graduation project report is available in the repository as a PDF file
-- The model training code is extensively commented to explain the machine learning approach
-- The Flutter application code includes documentation for key components
-
-## 📄 License
-
-This project is intended for educational and personal use. 
