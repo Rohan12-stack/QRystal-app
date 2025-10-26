@@ -1,0 +1,47 @@
+name: qrystal
+description: "A Flutter mobile app that uses TFLite for QR detection."
+publish_to: 'none' # Prevent accidental publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI and icons
+  cupertino_icons: ^1.0.8
+
+  # QR Scanner
+  mobile_scanner: ^7.1.2
+
+  # TensorFlow Lite for Flutter
+  tflite_flutter: ^0.11.0
+
+  # For picking images from gallery/camera
+  image_picker: ^1.2.0
+
+  # For decoding QR from images (optional)
+  qr_code_tools: ^0.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: 0.13.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/model.tflite
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/app.png"   # path to your file
+  adaptive_icon_background: "#FFFFFF" # optional (for adaptive icons), use a hex color
+  adaptive_icon_foreground: "assets/app.png" # used for adaptive icon on Android
+
